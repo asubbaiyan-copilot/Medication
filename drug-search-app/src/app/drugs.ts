@@ -7,6 +7,7 @@ interface Drug {
   name: string;
   dosage: string;
   frequency: string;
+  shape: string;
 }
 
 @Component({
@@ -18,23 +19,25 @@ interface Drug {
 })
 export class DrugsComponent {
   drugs = signal<Drug[]>([
-    { id: 1, name: 'Aspirin', dosage: '500mg', frequency: 'Twice daily' },
-    { id: 2, name: 'Ibuprofen', dosage: '400mg', frequency: 'Three times daily' },
-    { id: 3, name: 'Amoxicillin', dosage: '250mg', frequency: 'Twice daily' }
+    { id: 1, name: 'Aspirin', dosage: '500mg', frequency: 'Twice daily', shape: 'Tablet' },
+    { id: 2, name: 'Ibuprofen', dosage: '400mg', frequency: 'Three times daily', shape: 'Capsule' },
+    { id: 3, name: 'Amoxicillin', dosage: '250mg', frequency: 'Twice daily', shape: 'Capsule' }
   ]);
 
   newDrugName = signal('');
   newDrugDosage = signal('');
   newDrugFrequency = signal('');
+  newDrugShape = signal(''); 
 
   addDrug() {
-    if (this.newDrugName() && this.newDrugDosage() && this.newDrugFrequency()) {
+    if (this.newDrugName() && this.newDrugDosage() && this.newDrugFrequency() && this.newDrugShape()) {
       const newId = Math.max(...this.drugs().map(d => d.id), 0) + 1;
       const newDrug: Drug = {
         id: newId,
         name: this.newDrugName(),
         dosage: this.newDrugDosage(),
-        frequency: this.newDrugFrequency()
+        frequency: this.newDrugFrequency(),
+        shape: this.newDrugShape()
       };
       this.drugs.set([...this.drugs(), newDrug]);
       this.clearForm();
@@ -49,5 +52,6 @@ export class DrugsComponent {
     this.newDrugName.set('');
     this.newDrugDosage.set('');
     this.newDrugFrequency.set('');
+    this.newDrugShape.set('');
   }
 }
