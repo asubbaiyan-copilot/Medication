@@ -14,14 +14,17 @@ describe('app navigation', () => {
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
     await fixture.whenStable();
+    expect(fixture.nativeElement.querySelector('app-home')?.textContent).toContain('Welcome to Drug Search');
     expect(fixture.nativeElement.querySelector('app-drugs')).toBeNull();
 
     await router.navigateByUrl('/drugs');
     await fixture.whenStable();
+    expect(fixture.nativeElement.querySelector('app-home')).toBeNull();
     expect(fixture.nativeElement.querySelector('app-drugs')).not.toBeNull();
 
     await router.navigateByUrl('/');
     await fixture.whenStable();
+    expect(fixture.nativeElement.querySelector('app-home')).not.toBeNull();
     expect(fixture.nativeElement.querySelector('app-drugs')).toBeNull();
   });
 });

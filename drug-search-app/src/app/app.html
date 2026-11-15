@@ -1,19 +1,8 @@
- <p [title]="canShow() ? tips() : fullName()">tips</p>
 
 <h3>{{titleSignal()}}</h3>
-<p>Hello World!</p>
-<p>Full Name: {{fullName()}}</p>
-@if (canShow()) {
-   <p>
-   This sectiom will be shown only when the *canShow* property's value in the corresponding component is *true* </p>
-}
- <button (click)="changeTitle()">Change</button>
-
- <button (click)="toggleTooltip()">Toggle Tooltip</button>
-
- <nav>
-   <a routerLink="/">Home</a>
-   <a routerLink="/drugs">Drugs</a>
+ <nav class="navbar">
+   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+   <a routerLink="/drugs" routerLinkActive="active">Drugs</a>
  </nav>
 
  <router-outlet />

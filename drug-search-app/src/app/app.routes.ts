@@ -4,10 +4,10 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    children: []
+    loadComponent: () => import('./home').then(m => m.HomeComponent)
   },
   {
     path: 'drugs',
     loadComponent: () => import('./drugs').then(m => m.DrugsComponent)
-  }
+  } 
 ];
