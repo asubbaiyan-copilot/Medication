@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 
-<<<<<<< HEAD
-export const routes: Routes = [];
-=======
 export const routes: Routes = [
   {
     path: '',
@@ -14,4 +11,3 @@ export const routes: Routes = [
     loadComponent: () => import('./drugs').then(m => m.DrugsComponent)
   } 
 ];
->>>>>>> develop
