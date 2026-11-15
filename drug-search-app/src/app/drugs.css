@@ -1,0 +1,121 @@
+.drugs-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.drugs-container h2 {
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.add-drug-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0;
+}
+
+.add-drug-section h3 {
+  margin-top: 0;
+  color: #555;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.btn-add {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+.drugs-list-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.drugs-list-section h3 {
+  margin-top: 0;
+  color: #555;
+}
+
+.drugs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.drugs-table thead {
+  background-color: #007bff;
+  color: white;
+}
+
+.drugs-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.drugs-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.drugs-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-remove {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-remove:hover {
+  background-color: #c82333;
+}
+
+.no-drugs {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 20px;
+}

@@ -1,0 +1,60 @@
+<div class="drugs-container">
+  <h2>Medication Management</h2>
+
+  <div class="add-drug-section">
+    <h3>Add New Medication</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Drug Name"
+        [(ngModel)]="newDrugName"
+        class="input-field"
+      />
+      <input
+        type="text"
+        placeholder="Dosage (e.g., 500mg)"
+        [(ngModel)]="newDrugDosage"
+        class="input-field"
+      />
+      <input
+        type="text"
+        placeholder="Frequency (e.g., Twice daily)"
+        [(ngModel)]="newDrugFrequency"
+        class="input-field"
+      />
+      <button (click)="addDrug()" class="btn-add">Add Drug</button>
+    </div>
+  </div>
+
+  <div class="drugs-list-section">
+    <h3>Current Medications</h3>
+    @if (drugs().length > 0) {
+      <table class="drugs-table">
+        <thead>
+          <tr>
+            <th>Drug Name</th>
+            <th>Dosage</th>
+            <th>Frequency</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (drug of drugs(); track drug.id) {
+            <tr>
+              <td>{{ drug.name }}</td>
+              <td>{{ drug.dosage }}</td>
+              <td>{{ drug.frequency }}</td>
+              <td>
+                <button (click)="removeDrug(drug.id)" class="btn-remove">
+                  Remove
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p class="no-drugs">No medications added yet.</p>
+    }
+  </div>
+</div>
