@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +18,8 @@ interface Drug {
   styleUrls: ['./drugs.css']
 })
 export class DrugsComponent {
+  drugTotalCount = computed(() => this.drugs().length);
+  
   drugs = signal<Drug[]>([
     { id: 1, name: 'Aspirin', dosage: '500mg', frequency: 'Twice daily', shape: 'Tablet' },
     { id: 2, name: 'Ibuprofen', dosage: '400mg', frequency: 'Three times daily', shape: 'Capsule' },
