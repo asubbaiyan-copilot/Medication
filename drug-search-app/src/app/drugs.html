@@ -1,5 +1,6 @@
 <div class="drugs-container">
   <h2>Medication Management</h2>
+  <p>Total Medications: {{ drugTotalCount() }}</p>
 
   <div class="add-drug-section">
     <h3>Add New Medication</h3>
@@ -22,6 +23,12 @@
         [(ngModel)]="newDrugFrequency"
         class="input-field"
       />
+      <input
+        type="text"
+        placeholder="Shape (e.g., Tablet)"
+        [(ngModel)]="newDrugShape"
+        class="input-field"
+      />
       <button (click)="addDrug()" class="btn-add">Add Drug</button>
     </div>
   </div>
@@ -35,6 +42,7 @@
             <th>Drug Name</th>
             <th>Dosage</th>
             <th>Frequency</th>
+            <th>Shape</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -44,6 +52,7 @@
               <td>{{ drug.name }}</td>
               <td>{{ drug.dosage }}</td>
               <td>{{ drug.frequency }}</td>
+              <td>{{ drug.shape }}</td> 
               <td>
                 <button (click)="removeDrug(drug.id)" class="btn-remove">
                   Remove
