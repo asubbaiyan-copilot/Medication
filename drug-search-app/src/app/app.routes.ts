@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'entry',
-    loadComponent: () => import('./drug-entry/drug-entry').then(m => m.DrugEntry)
+    loadComponent: () => import('./features/drug-entry/drug-entry').then(m => m.DrugEntryComponent)
   },
   {
     path: 'drugs',
