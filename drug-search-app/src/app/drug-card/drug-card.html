@@ -1,0 +1,23 @@
+<div class="card">
+      <h3>{{ name }}</h3>
+      <p>Dose: {{ dose }} mg</p>
+      <p>Price: {{ price | currency }}</p>
+      <p>Quantity: {{ quantity }}</p>
+      <p>Total: {{ quantity * price }}</p>
+      <p>Stock Status: {{ inStock ? 'In Stock' : 'Out of Stock' }}</p>
+      <p>Actions:</p>
+      <button (click)="doSales(1)">Sell 1</button>
+      @if (warning() && !inStock) {
+            <div class="warning" role="alert">⚠️ {{ warning() }}</div>
+      }
+      <button (click)="doPurchase(1)">Purchase 1</button> 
+      @if (inStock) {
+        <span>In stock</span>
+        <button (click)="stockIt()">Mark Out of Stock</button>
+      }
+      @else {
+        <span>Out of stock</span>
+        <button (click)="stockIt()">Restock</button>  
+      }
+      <button (click)="priceIt()">Increase Price</button>
+</div>

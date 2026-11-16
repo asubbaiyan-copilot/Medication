@@ -1,0 +1,24 @@
+<p>drug-entry works!</p>
+<h1>{{title}}</h1>
+<!-- Display a single drug card for Aspirin --> <!-- Loop through the drugs array and display each drug using the drug-card component -->
+  @for (d of drugs; track d.name) {
+      <app-drug-card
+        [name]="d.name"
+        [dose]="d.dose"
+        [price]="d.price"
+        [inStock]="d.inStock">
+      </app-drug-card>
+    }
+    <button (click)="raisePrice()">Raise Price</button>    
+    <button (click)="updateDrug(0, { name: 'Updated Drug', dose: 150, price: 7, inStock: true })">Update First Drug</button>    
+    <button (click)="addDrug()">Add Drug</button>
+    <button (click)="removeDrug()">Remove Drug</button>
+    <p>Total drugs: {{drugs.length}}</p>
+    @if(drugs.length === 0) {
+      <p>No drugs available.</p>
+    }
+    @else {
+      <p>Drugs are available.</p>
+    }
+
+ 
