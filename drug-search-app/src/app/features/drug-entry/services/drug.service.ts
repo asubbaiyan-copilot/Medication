@@ -1,4 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { APP_CONFIG } from '../../../app-config.token';
 
 export interface Drug {
   readonly name: string;
@@ -9,13 +11,34 @@ export interface Drug {
 
 @Injectable({ providedIn: 'root' })
 export class DrugService {
-  private readonly drugList = signal<readonly Drug[]>([
-    { name: 'Aspirin', dose: 500, price: 10, quantity: 0 },
-    { name: 'Ibuprofen', dose: 200, price: 15, quantity: 0 },
-    { name: 'Paracetamol', dose: 500, price: 8, quantity: 0 },
-  ]);
-  readonly drugs = this.drugList.asReadonly();
+  private readonly http = inject(HttpClient);
+  private readonly config = inject(APP_CONFIG);
 
+  private readonly apiUrl = `${this.config.apiBaseUrl}/drugs/druglist`;
+  private readonly drugList = signal<readonly Drug[]>([]);
+
+  // private readonly drugList = signal<readonly Drug[]>([
+  //   { name: 'Aspirin', dose: 500, price: 10, quantity: 0 },
+  //   { name: 'Ibuprofen', dose: 200, price: 15, quantity: 0 },
+  //   { name: 'Paracetamol', dose: 500, price: 8, quantity: 0 },
+  // ]);
+  getDrugList(): readonly Drug[] {
+    return this.drugList();
+  }
+  constructor() {
+    this.loadDrug();
+  }
+  loadDrug(): void {
+    this.http.get<readonly Drug[]>(this.apiUrl).subscribe({
+      next: (drugs) => this.drugList.set(drugs),
+      error: (error)=>{
+        console.error('Failed to load drugs', error);
+      },
+      complete: () => { 
+        console.log('Drug loading complete {drugList: ', this.drugList()); 
+      }
+    });    
+  }
   addDrug(): void {
     this.drugList.update(drugs => [
       ...drugs,
