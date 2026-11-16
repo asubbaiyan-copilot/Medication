@@ -1,6 +1,6 @@
 <p>drug-entry works!</p>
 <h1>{{title}}</h1>
-  @for (d of drugs(); track $index; let i = $index) {
+  @for (d of getDrugList(); track $index; let i = $index) {
       <app-drug-card
         [name]="d.name"
         [dose]="d.dose"
@@ -14,8 +14,8 @@
     <button (click)="updateDrug(0, { name: 'Updated Drug', dose: 150, price: 7, quantity: 0 })">Update First Drug</button>
     <button (click)="addDrug()">Add Drug</button>
     <button (click)="removeDrug()">Remove Drug</button>
-    <p>Total drugs: {{drugs().length}}</p>
-    @if(drugs().length === 0) {
+    <p>Total drugs: {{getDrugList().length}}</p>
+    @if(getDrugList().length === 0) {
       <p>No drugs available.</p>
     }
     @else {
