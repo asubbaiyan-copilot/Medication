@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, signal, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { DrugService } from '../../services/drug.service';
+import { DRUG_SERVICE } from '../../services/IDrugService';
 
 @Component({
   imports: [CurrencyPipe],
@@ -21,7 +21,7 @@ export class DrugCardComponent implements OnChanges {
   @Output() quantityChange = new EventEmitter<number>();
   @Output() priceChange = new EventEmitter<number>();
 
-  constructor(private drugService: DrugService) {}
+  private readonly drugService = inject(DRUG_SERVICE);
 
   get inStock(): boolean {
     return this.drugService.isInStock(this.quantity);

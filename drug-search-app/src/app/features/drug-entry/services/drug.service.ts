@@ -1,6 +1,7 @@
 import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG } from '../../../app-config.token';
+import type { IDrugService } from './IDrugService';
 
 export interface Drug {
   readonly name: string;
@@ -10,7 +11,7 @@ export interface Drug {
 }
 
 @Injectable({ providedIn: 'root' })
-export class DrugService {
+export class DrugService implements IDrugService {
   private readonly http = inject(HttpClient);
   private readonly config = inject(APP_CONFIG);
 
@@ -45,7 +46,9 @@ export class DrugService {
       { name: 'New Drug', dose: 100, price: 5, quantity: 0 },
     ]);
   }
-
+  /// Updates the drug at the specified index with the provided drug object.
+  /// @param index The index of the drug to update.
+  /// @param drug The new drug object to replace the existing one.
   updateDrug(index: number, drug: Drug): void {
     this.drugList.update(drugs => drugs.map((current, i) => i === index ? drug : current));
   }

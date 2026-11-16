@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { DrugCardComponent } from './components/drug-card/drug-card';
-import { Drug, DrugService } from './services/drug.service';
+import type { Drug } from './services/drug.service';
+import { DRUG_SERVICE } from './services/IDrugService';
 
 @Component({
   imports: [DrugCardComponent],
-  providers: [DrugService],
   selector: 'app-drug-entry',
   styleUrls: ['./drug-entry.css'],
   templateUrl: './drug-entry.html',
 })
 export class DrugEntryComponent {
-  private readonly drugService = inject(DrugService);
+  private readonly drugService = inject(DRUG_SERVICE);
   readonly title = 'Drug Entry';
  
   getDrugList(): readonly Drug[] {
