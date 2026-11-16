@@ -12,8 +12,10 @@ import { Drug, DrugService } from './services/drug.service';
 export class DrugEntryComponent {
   private readonly drugService = inject(DrugService);
   readonly title = 'Drug Entry';
-  readonly drugs = this.drugService.drugs;
-
+ 
+  getDrugList(): readonly Drug[] {
+    return this.drugService.getDrugList();
+  } 
   addDrug() {
     this.drugService.addDrug();
   }
