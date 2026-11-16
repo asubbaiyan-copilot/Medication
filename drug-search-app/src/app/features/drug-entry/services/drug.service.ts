@@ -1,14 +1,9 @@
 import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG } from '../../../app-config.token';
+import type { Drug } from '../models/drug';
 import type { IDrugService } from './IDrugService';
 
-export interface Drug {
-  readonly name: string;
-  readonly dose: number;
-  readonly price: number;
-  readonly quantity: number;
-}
 
 @Injectable({ providedIn: 'root' })
 export class DrugService implements IDrugService {

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DrugCardComponent } from './components/drug-card/drug-card';
-import type { Drug } from './services/drug.service';
+import type { Drug } from './models/drug';
 import { DRUG_SERVICE } from './services/IDrugService';
 
 @Component({
