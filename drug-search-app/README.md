@@ -2,6 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
 
+## Project structure
+
+The drug-entry feature lives in `src/app/features/drug-entry/`. Its entry component
+stays at the feature root, the card is in `components/drug-card/`, and its service
+is in `services/`. Tests sit alongside the code they cover. The service holds
+in-memory demo data scoped to the entry component, so the data resets when the
+page is reopened. Application routing remains in `src/app/app.routes.ts`.
+
 ## Development server
 
 To start a local development server, run:
