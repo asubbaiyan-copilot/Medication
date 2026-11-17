@@ -54,9 +54,28 @@
   font-weight: bold;
   transition: background-color 0.3s;
 }
-
-.btn-add:hover {
+.darkCol {
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s;
+}
+.darkRed {
+    background-color: darkred;
+    color: white;
+    transition: background-color 0.5s;
+}
+.darkGreen {
+    background-color: darkgreen;
+    color: white;
+    transition: background-color 0.5s;
+}
+.btn-add:hover:not(:disabled) {
   background-color: #218838;
+}
+
+.btn-add:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
 }
 
 .drugs-list-section {
