@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DrugRepository } from '../application/ports/drug-repository';
 import { DrugEntryComponent } from './drug-entry';
 
 describe('DrugEntry', () => {
@@ -8,14 +9,25 @@ describe('DrugEntry', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DrugEntryComponent],
+      providers: [{
+        provide: DrugRepository,
+        useValue: {
+          loadAll: () => Promise.resolve([
+            { name: 'Aspirin', dose: 500, price: 10, quantity: 0 },
+            { name: 'Ibuprofen', dose: 200, price: 15, quantity: 0 },
+            { name: 'Paracetamol', dose: 500, price: 8, quantity: 0 },
+          ]),
+        },
+      }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DrugEntryComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
 

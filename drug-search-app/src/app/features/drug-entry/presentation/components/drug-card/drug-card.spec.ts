@@ -15,7 +15,7 @@ describe('DrugCard', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
 

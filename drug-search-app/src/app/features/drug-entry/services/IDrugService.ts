@@ -1,4 +1,4 @@
-import type { Drug } from '../models/drug';
+import type { Drug } from '../domain/drug';
 import { InjectionToken } from '@angular/core';
 
 
