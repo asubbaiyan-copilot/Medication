@@ -2,12 +2,23 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { App } from './app';
 import { routes } from './app.routes';
+import { DrugRepository } from './features/drug-entry/application/ports/drug-repository';
 
 describe('app navigation', () => {
   it('loads drugs on navigation and removes them when returning home', async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter(routes)]
+      providers: [
+        provideRouter(routes),
+        {
+          provide: DrugRepository,
+          useValue: {
+            loadAll: () => Promise.resolve([
+              { name: 'Aspirin', dose: 500, price: 10, quantity: 0 },
+            ]),
+          },
+        },
+      ]
     }).compileComponents();
 
     const fixture = TestBed.createComponent(App);

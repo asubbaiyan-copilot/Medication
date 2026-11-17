@@ -8,10 +8,10 @@ export const routes: Routes = [
   },
   {
     path: 'entry',
-    loadComponent: () => import('./features/drug-entry/drug-entry').then(m => m.DrugEntryComponent)
+    loadComponent: () => import('./features/drug-entry/presentation/drug-entry').then(m => m.DrugEntryComponent)
   },
   {
     path: 'drugs',
-    loadComponent: () => import('./drugs').then(m => m.DrugsComponent)
+    loadComponent: () => import('./features/drugs/presentation/drugs').then(m => m.DrugsComponent)
   } 
 ];

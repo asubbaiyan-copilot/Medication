@@ -1,0 +1,39 @@
+<main class="drug-entry">
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+
+  @if (store.loadError()) {
+    <p role="alert">{{ store.loadError() }}</p>
+    <button type="button" (click)="store.loadDrug()">Retry</button>
+  } @else if (drugs().length === 0) {
+    <p>No drugs are currently available.</p>
+  } @else {
+    <p>{{ drugs().length }} drugs in inventory</p>
+
+    <ul class="drug-entry__list" aria-label="Drug inventory">
+      @for (drug of drugs(); track $index; let index = $index) {
+        <li>
+          <app-drug-card
+            [name]="drug.name"
+            [dose]="drug.dose"
+            [price]="drug.price"
+            [quantity]="drug.quantity"
+            (quantityChange)="updateQuantity(index, $event)"
+            (priceChange)="updatePrice(index, $event)">
+          </app-drug-card>
+        </li>
+      }
+    </ul>
+  }
+
+  <section class="drug-entry__actions" aria-label="Inventory actions">
+    <button type="button" (click)="addDrug()">Add drug</button>
+    <button type="button" [disabled]="drugs().length === 0" (click)="raisePrice()">
+      Raise all prices
+    </button>
+    <button type="button" [disabled]="drugs().length === 0" (click)="removeDrug()">
+      Remove last drug
+    </button>
+  </section>
+</main>

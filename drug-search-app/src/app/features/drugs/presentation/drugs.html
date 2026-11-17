@@ -1,35 +1,53 @@
 <div class="drugs-container">
-  <h2>Medication Management</h2>
+  <h2 appCustomStyle>Medication Management</h2>
   <p>Total Medications: {{ drugTotalCount() }}</p>
+  <p [ngStyle]="{'color': 'red', 'font-size': '14px'}"> 
+    paragraph style is applied using ngStyle 
+  </p>
+  @if(!isEntryValid()){
+    <div [ngClass] = "'darkRed'">
+      Enter Medication Details Here and make sure to enter all values
+   </div>
+  }
+  @else {
+    <div [ngClass] = "'darkGreen'">
+      Good to go!
+   </div>
+
+  }
 
   <div class="add-drug-section">
     <h3>Add New Medication</h3>
     <div class="form-group">
       <input
         type="text"
-        placeholder="Drug Name"
+        [attr.placeholder]="captionNewDrugName"
+        [attr.required]="isRequired"
         [(ngModel)]="newDrugName"
         class="input-field"
       />
       <input
         type="text"
-        placeholder="Dosage (e.g., 500mg)"
+        [attr.placeholder]="captionNewDrugDosage"
+             [attr.required]="isRequired"
         [(ngModel)]="newDrugDosage"
         class="input-field"
       />
       <input
         type="text"
-        placeholder="Frequency (e.g., Twice daily)"
+        [attr.placeholder]="captionNewDrugFrequency"
+        [attr.required]="isRequired"
         [(ngModel)]="newDrugFrequency"
         class="input-field"
       />
       <input
         type="text"
-        placeholder="Shape (e.g., Tablet)"
+        [attr.placeholder]="captionNewDrugShape"
+        [attr.required]="isRequired"
         [(ngModel)]="newDrugShape"
         class="input-field"
       />
-      <button (click)="addDrug()" class="btn-add">Add Drug</button>
+      <button (click)="addDrug()" [disabled]="!isEntryValid()" class="btn-add">Add Drug</button>
     </div>
   </div>
 
@@ -52,7 +70,7 @@
               <td>{{ drug.name }}</td>
               <td>{{ drug.dosage }}</td>
               <td>{{ drug.frequency }}</td>
-              <td>{{ drug.shape }}</td> 
+              <td>{{ drug.shape }}</td>
               <td>
                 <button (click)="removeDrug(drug.id)" class="btn-remove">
                   Remove
