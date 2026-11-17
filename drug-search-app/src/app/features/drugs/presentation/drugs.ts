@@ -2,22 +2,33 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import type { Drug } from '../domain/drug';
+import { CustomStyle } from '../../drug-entry/presentation/directives/custom-style';
 
 @Component({
   selector: 'app-drugs',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CustomStyle],
   standalone: true,
   templateUrl: './drugs.html',
   styleUrls: ['./drugs.css'],
 })
 export class DrugsComponent {
+  isRequired :boolean = true;
+  readonly captionNewDrugName: string = 'Drug Name';
+  readonly captionNewDrugDosage: string = 'Dosage';
+  readonly captionNewDrugFrequency: string = 'Frequency';
+  readonly captionNewDrugShape: string = 'Shape';
+  
   drugTotalCount = computed(() => this.drugs().length);
+  isEntryValid = computed(() =>
+    [
+      this.newDrugName(),
+      this.newDrugDosage(),
+      this.newDrugFrequency(),
+      this.newDrugShape(),
+    ].every(value => value.trim().length > 0),
+  );
 
-  drugs = signal<Drug[]>([
-    { id: 1, name: 'Aspirin', dosage: '500mg', frequency: 'Twice daily', shape: 'Tablet' },
-    { id: 2, name: 'Ibuprofen', dosage: '400mg', frequency: 'Three times daily', shape: 'Capsule' },
-    { id: 3, name: 'Amoxicillin', dosage: '250mg', frequency: 'Twice daily', shape: 'Capsule' },
-  ]);
+  drugs = signal<Drug[]>([]);
 
   newDrugName = signal('');
   newDrugDosage = signal('');
@@ -25,18 +36,18 @@ export class DrugsComponent {
   newDrugShape = signal('');
 
   addDrug(): void {
-    if (this.newDrugName() && this.newDrugDosage() && this.newDrugFrequency() && this.newDrugShape()) {
-      const newId = Math.max(...this.drugs().map(drug => drug.id), 0) + 1;
-      const newDrug: Drug = {
-        id: newId,
-        name: this.newDrugName(),
-        dosage: this.newDrugDosage(),
-        frequency: this.newDrugFrequency(),
-        shape: this.newDrugShape(),
-      };
-      this.drugs.set([...this.drugs(), newDrug]);
-      this.clearForm();
-    }
+    if (!this.isEntryValid()) return;
+
+    const newId = Math.max(...this.drugs().map(drug => drug.id), 0) + 1;
+    const newDrug: Drug = {
+      id: newId,
+      name: this.newDrugName().trim(),
+      dosage: this.newDrugDosage().trim(),
+      frequency: this.newDrugFrequency().trim(),
+      shape: this.newDrugShape().trim(),
+    };
+    this.drugs.set([...this.drugs(), newDrug]);
+    this.clearForm();
   }
 
   removeDrug(id: number): void {
