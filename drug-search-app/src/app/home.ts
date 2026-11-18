@@ -1,9 +1,10 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  templateUrl: './home.html'
+  templateUrl: './home.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent {
    // signal are reactive state variables in Angular that can be used to track and react to changes in their values.
