@@ -1,0 +1,52 @@
+{
+  "drugs": [
+    {
+      "id": "1",
+      "name": "Aspirin",
+      "dose": "81 mg",
+      "price": 10,
+      "quantity": 100
+    },
+    {
+      "id": "2",
+      "name": "Metformin",
+      "dose": "500 mg",
+      "price": 15,
+      "quantity": 75
+    }
+  ],
+
+  "patients": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Smith",
+      "age": 52
+    },
+    {
+      "id": "2",
+      "firstName": "Mary",
+      "lastName": "Jones",
+      "age": 44
+    }
+  ],
+
+  "prescriptions": [
+    {
+      "id": "1",
+      "patientId": "1",
+      "drugId": "2",
+      "quantity": 30,
+      "refills": 3
+    }
+  ],
+
+  "pharmacies": [
+    {
+      "id": "1",
+      "name": "Main Street Pharmacy",
+      "city": "Boston",
+      "state": "MA"
+    }
+  ]
+}

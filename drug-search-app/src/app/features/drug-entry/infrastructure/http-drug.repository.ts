@@ -9,7 +9,7 @@ import { DrugRepository } from '../application/ports/drug-repository';
 export class HttpDrugRepository extends DrugRepository {
   private readonly http = inject(HttpClient);
   private readonly config = inject(APP_CONFIG);
-  private readonly apiUrl = `${this.config.apiBaseUrl}/drugs/druglist`;
+  private readonly apiUrl = `${this.config.apiBaseUrl}/drugs`;
 
   loadAll(): Promise<readonly Drug[]> {
     return firstValueFrom(this.http.get<readonly Drug[]>(this.apiUrl));
