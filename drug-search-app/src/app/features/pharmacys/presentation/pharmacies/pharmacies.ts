@@ -1,26 +1,50 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { PharmacyServices } from '../../services/pharmacy-services';
 import { Pharmacy } from '../../domain/pharmacy';
 import { LtcInstance } from '../../domain/LtcInstance';
 import { DocutrackInstance } from '../../domain/docutrackInstance';
 
+export interface PharmacyRow {
+  readonly pharmacy: Pharmacy;
+  readonly docutrack: DocutrackInstance | null;
+  readonly ltc: LtcInstance | null;
+}
 
 @Component({
   imports: [],
   selector: 'app-pharmacies',
-  styleUrls:  ['./pharmacies.css'],
+  styleUrls: ['./pharmacies.css'],
   templateUrl: './pharmacies.html',
 })
 export class Pharmacies {
-  private readonly pharmacy = inject(PharmacyServices);
-  
-  readonly pharmacys:readonly Pharmacy[]  = this.pharmacy.pharmacyData;
-  readonly docutrackInstances:readonly DocutrackInstance[] = this.pharmacy.docutrackInstancesData;
-  readonly ltcs:readonly LtcInstance[] = this.pharmacy.ltcsData;
+  private readonly pharmacyServices = inject(PharmacyServices);
 
-    constructor() {
-    console.log(this.pharmacys);
-    console.log(this.docutrackInstances);
-    console.log(this.ltcs);
+  readonly expandedIds = signal<ReadonlySet<string>>(new Set());
+
+  readonly rows = computed<readonly PharmacyRow[]>(() => {
+    const docutrackById = new Map(this.pharmacyServices.docutrackInstancesList().map((i) => [i.id, i]));
+    const ltcById = new Map(this.pharmacyServices.ltcInstances().map((i) => [i.id, i]));
+
+    return this.pharmacyServices.pharmacies().map((pharmacy) => ({
+      pharmacy,
+      docutrack: pharmacy.docutrackInstanceId ? docutrackById.get(pharmacy.docutrackInstanceId) ?? null : null,
+      ltc: pharmacy.ltcInstanceId ? ltcById.get(pharmacy.ltcInstanceId) ?? null : null,
+    }));
+  });
+
+  isExpanded(id: string): boolean {
+    return this.expandedIds().has(id);
+  }
+
+  toggle(id: string): void {
+    this.expandedIds.update((ids) => {
+      const next = new Set(ids);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
   }
 }

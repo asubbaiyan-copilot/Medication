@@ -17,20 +17,12 @@ export class PharmacyServices {
     private readonly docutrackInstances = signal<readonly DocutrackInstance[]>([]);
     private readonly ltcs  = signal<readonly LtcInstance[]>([]);
 
+    readonly pharmacies = this.pharmacys.asReadonly();
+    readonly docutrackInstancesList = this.docutrackInstances.asReadonly();
+    readonly ltcInstances = this.ltcs.asReadonly();
+
     constructor() {
         this.loadPharmacies();
-    }
-    
-    get pharmacyData() : readonly Pharmacy[] {
-        return this.pharmacys();
-    }
-    
-    get docutrackInstancesData() : readonly DocutrackInstance[] {
-        return this.docutrackInstances();
-    }
-    
-    get ltcsData() : readonly LtcInstance[] {
-        return this.ltcs();
     }
 
 
