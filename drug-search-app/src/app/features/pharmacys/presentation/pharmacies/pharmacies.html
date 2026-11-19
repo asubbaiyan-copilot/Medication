@@ -1,0 +1,21 @@
+<p>pharmacies works!</p>
+<ul>
+   @for (pharmacy of pharmacys; track pharmacy.id) {
+    <li>{{ pharmacy.name }}</li>
+    <p>{{ pharmacy.address }}</p>
+    <p>{{ pharmacy.state }}</p>
+    <p>{{ pharmacy.phone }}</p>
+    <p>{{ pharmacy.active }}</p>
+    <p>{{ pharmacy.pharmacyType }}</p>
+  }
+</ul>
+<ul>
+   @for (instance of docutrackInstances; track instance.id) {
+    <li>{{ instance.name }}</li>
+  }
+</ul>
+<ul>
+   @for (instance of ltcs; track instance.id) {
+    <li>{{ instance.name }}</li>
+  }
+</ul>

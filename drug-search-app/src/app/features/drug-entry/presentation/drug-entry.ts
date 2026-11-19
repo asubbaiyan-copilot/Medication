@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DrugCardComponent } from './components/drug-card/drug-card';
 import { DrugEntryStore } from './state/drug-entry.store';
-
+ 
 @Component({
   imports: [DrugCardComponent],
   selector: 'app-drug-entry',
@@ -12,7 +12,7 @@ export class DrugEntryComponent {
   readonly store = inject(DrugEntryStore);
   readonly drugs = this.store.drugs;
   readonly title = 'Drug Entry';
-
+ 
   addDrug(): void {
     this.store.addDrug();
   }

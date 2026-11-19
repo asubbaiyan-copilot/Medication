@@ -44,9 +44,169 @@
   "pharmacies": [
     {
       "id": "1",
-      "name": "Main Street Pharmacy",
+      "name": "Boston Long Term Care Pharmacy",
+      "code": "BOSLTC",
+      "address": "100 Main Street",
       "city": "Boston",
-      "state": "MA"
+      "state": "MA",
+      "zipCode": "02110",
+      "phone": "617-555-1001",
+      "pharmacyType": "LTC",
+      "docutrackInstanceId": "1",
+      "ltcInstanceId": "1",
+      "active": true
+    },
+    {
+      "id": "2",
+      "name": "Chelmsford LTC Pharmacy",
+      "code": "CHELTC",
+      "address": "200 Central Street",
+      "city": "Chelmsford",
+      "state": "MA",
+      "zipCode": "01824",
+      "phone": "978-555-2001",
+      "pharmacyType": "LTC",
+      "docutrackInstanceId": "2",
+      "ltcInstanceId": "2",
+      "active": true
+    },
+    {
+      "id": "3",
+      "name": "Cambridge Care Pharmacy",
+      "code": "CAMCARE",
+      "address": "300 Cambridge Street",
+      "city": "Cambridge",
+      "state": "MA",
+      "zipCode": "02139",
+      "phone": "617-555-3001",
+      "pharmacyType": "LTC",
+      "docutrackInstanceId": "1",
+      "ltcInstanceId": "1",
+      "active": true
+    },
+    {
+      "id": "4",
+      "name": "Lowell Senior Care Pharmacy",
+      "code": "LOWSCP",
+      "address": "400 Merrimack Street",
+      "city": "Lowell",
+      "state": "MA",
+      "zipCode": "01852",
+      "phone": "978-555-4001",
+      "pharmacyType": "LTC",
+      "docutrackInstanceId": null,
+      "ltcInstanceId": "2",
+      "active": true
+    },
+    {
+      "id": "5",
+      "name": "Worcester Institutional Pharmacy",
+      "code": "WORINST",
+      "address": "500 Park Avenue",
+      "city": "Worcester",
+      "state": "MA",
+      "zipCode": "01603",
+      "phone": "508-555-5001",
+      "pharmacyType": "Institutional",
+      "docutrackInstanceId": "3",
+      "ltcInstanceId": "3",
+      "active": true
+    },
+    {
+      "id": "6",
+      "name": "Springfield Community Pharmacy",
+      "code": "SPRCOM",
+      "address": "600 State Street",
+      "city": "Springfield",
+      "state": "MA",
+      "zipCode": "01109",
+      "phone": "413-555-6001",
+      "pharmacyType": "Retail",
+      "docutrackInstanceId": null,
+      "ltcInstanceId": null,
+      "active": true
+    },
+    {
+      "id": "7",
+      "name": "North Shore LTC Pharmacy",
+      "code": "NSLTC",
+      "address": "700 Highland Avenue",
+      "city": "Salem",
+      "state": "MA",
+      "zipCode": "01970",
+      "phone": "978-555-7001",
+      "pharmacyType": "LTC",
+      "docutrackInstanceId": "1",
+      "ltcInstanceId": "1",
+      "active": false
+    },
+    {
+      "id": "8",
+      "name": "MetroWest Long Term Care",
+      "code": "MWLTC",
+      "address": "800 Concord Street",
+      "city": "Framingham",
+      "state": "MA",
+      "zipCode": "01702",
+      "phone": "508-555-8001",
+      "pharmacyType": "LTC",
+      "docutrackInstanceId": "2",
+      "ltcInstanceId": "2",
+      "active": true
+    }
+  ],
+
+  "docutrack": [
+    {
+      "id": "1",
+      "instanceId": "DT-BOS-01",
+      "name": "Boston DocuTrack",
+      "sqlServerName": "SQL-DT-BOS-01",
+      "soapEndpointUrl": "https://dt-bos-01.local/DocuTrackService.asmx",
+      "active": true
+    },
+    {
+      "id": "2",
+      "instanceId": "DT-CHEL-01",
+      "name": "Chelmsford DocuTrack",
+      "sqlServerName": "SQL-DT-CHEL-01",
+      "soapEndpointUrl": "https://dt-chel-01.local/DocuTrackService.asmx",
+      "active": true
+    },
+    {
+      "id": "3",
+      "instanceId": "DT-WOR-01",
+      "name": "Worcester DocuTrack",
+      "sqlServerName": "SQL-DT-WOR-01",
+      "soapEndpointUrl": "https://dt-wor-01.local/DocuTrackService.asmx",
+      "active": false
+    }
+  ],
+
+  "ltc": [
+    {
+      "id": "1",
+      "instanceId": "LTC-BOS-01",
+      "name": "Boston LTC",
+      "sqlServerName": "SQL-LTC-BOS-01",
+      "soapEndpointUrl": "https://ltc-bos-01.local/LTCService.asmx",
+      "active": true
+    },
+    {
+      "id": "2",
+      "instanceId": "LTC-CHEL-01",
+      "name": "Chelmsford LTC",
+      "sqlServerName": "SQL-LTC-CHEL-01",
+      "soapEndpointUrl": "https://ltc-chel-01.local/LTCService.asmx",
+      "active": true
+    },
+    {
+      "id": "3",
+      "instanceId": "LTC-WOR-01",
+      "name": "Worcester LTC",
+      "sqlServerName": "SQL-LTC-WOR-01",
+      "soapEndpointUrl": "https://ltc-wor-01.local/LTCService.asmx",
+      "active": false
     }
   ]
 }
