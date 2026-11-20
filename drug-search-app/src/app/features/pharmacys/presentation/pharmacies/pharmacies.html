@@ -3,7 +3,8 @@
     <h1>Pharmacies</h1>
     <p class="pharmacies__subtitle">Select a pharmacy to view its linked Docutrack and LTC instances.</p>
   </header>
-
+  <app-in-out-child-sample [counter]="rows().length" [caption]="caption"></app-in-out-child-sample>
+  
   <ul class="pharmacy-list">
     @for (row of rows(); track row.pharmacy.id) {
       <li class="pharmacy-card" [class.pharmacy-card--open]="isExpanded(row.pharmacy.id)">

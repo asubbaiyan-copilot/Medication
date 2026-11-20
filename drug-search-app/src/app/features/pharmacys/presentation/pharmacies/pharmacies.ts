@@ -1,8 +1,9 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, Input, input, signal } from '@angular/core';
 import { PharmacyServices } from '../../services/pharmacy-services';
 import { Pharmacy } from '../../domain/pharmacy';
 import { LtcInstance } from '../../domain/LtcInstance';
 import { DocutrackInstance } from '../../domain/docutrackInstance';
+import { InOutChildSample } from './in-out-child-sample/in-out-child-sample';
 
 export interface PharmacyRow {
   readonly pharmacy: Pharmacy;
@@ -11,12 +12,14 @@ export interface PharmacyRow {
 }
 
 @Component({
-  imports: [],
+  imports: [InOutChildSample],
   selector: 'app-pharmacies',
   styleUrls: ['./pharmacies.css'],
   templateUrl: './pharmacies.html',
 })
 export class Pharmacies {
+
+  readonly caption = 'Pharmacy Management';
   private readonly pharmacyServices = inject(PharmacyServices);
 
   readonly expandedIds = signal<ReadonlySet<string>>(new Set());

@@ -1,6 +1,13 @@
 <div class="drugs-container">
   <h2 appCustomStyle>Medication Management</h2>
-  <p>Total Medications: {{ drugTotalCount() }}</p>
+  <button (click)="decrementCounter()">Decrement counter</button>
+  <button (click)="incrementCounter()">Increment counter</button>
+  @if (counterError()) {
+    <p class="counter-error" role="alert">{{ counterError() }}</p>
+  }
+  <p>Data from child: {{childCounter}}</p>
+  <app-in-out-child-sample [counter]="counter" [caption]="'I am a simple counter'" (counterChangeEvent)="get($event)"></app-in-out-child-sample>
+  <app-in-out-child-sample [counter]="drugTotalCount()" [caption]="caption"  ></app-in-out-child-sample>
   <p [ngStyle]="{'color': 'red', 'font-size': '14px'}"> 
     paragraph style is applied using ngStyle 
   </p>

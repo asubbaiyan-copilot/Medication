@@ -1,6 +1,7 @@
 <main class="drug-entry">
   <header>
     <h1>{{ title }}</h1>
+    <app-in-out-child-sample [counter]="drugs().length" [caption]="caption"></app-in-out-child-sample>
   </header>
 
   @if (store.loadError()) {
