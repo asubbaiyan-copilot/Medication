@@ -5,3 +5,18 @@
   <p>{{tips()}}</p>
   <p [title]="canShow()?tips():''">{{fullName()}}</p>
 }
+<app-child-counter #child></app-child-counter>
+<button (click)="child.increment()">Increment</button>
+<button (click)="child.decrement()">Decrement</button>
+<p>childCounter: {{child.childCounter()}}</p>
+
+<app-child-counter></app-child-counter>
+
+<button (click)="inc()">view child Increment</button>
+<button (click)="dec()">view child Decrement</button>
+<p>childCounter: {{counter()}}</p>
+
+ 
+<button (click)="incNew()">Increment New</button>
+<button (click)="decNew()">Decrement New</button>
+<p>newCounter: {{newCounter}}</p>
