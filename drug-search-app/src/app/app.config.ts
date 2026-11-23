@@ -1,6 +1,8 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, Type } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
+import { logInterceptor } from './log.interceptor';
+import { withInterceptors } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { DrugRepository } from './features/drug-entry/application/ports/drug-repository';
@@ -16,7 +18,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes), provideClientHydration(),
-    provideHttpClient(),
+    provideHttpClient( withInterceptors([logInterceptor]) ),
     { provide: DrugRepository, useClass: HttpDrugRepository },
     { provide: PharmacyRepository, useClass: HttpPharmacyRepository},
     { provide: DocutrackRepository, useClass: HttpDocurackRepository },
