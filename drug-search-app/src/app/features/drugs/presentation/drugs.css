@@ -10,6 +10,11 @@
   padding-bottom: 10px;
 }
 
+.counter-error {
+  color: #b00020;
+  margin: 8px 0;
+}
+
 .add-drug-section {
   background-color: #f9f9f9;
   padding: 20px;

@@ -5,3 +5,37 @@
   <p>{{tips()}}</p>
   <p [title]="canShow()?tips():''">{{fullName()}}</p>
 }
+<app-child-counter #child></app-child-counter>
+<button (click)="child.increment()">Increment</button>
+<button (click)="child.decrement()">Decrement</button>
+<p>childCounter: {{child.childCounter()}}</p>
+
+<app-child-counter></app-child-counter>
+
+<button (click)="inc()">view child Increment</button>
+<button (click)="dec()">view child Decrement</button>
+<p>childCounter: {{counter()}}</p>
+
+ 
+<button (click)="incNew()">Increment New</button>
+<button (click)="decNew()">Decrement New</button>
+<p>newCounter: {{newCounter}}</p>
+
+<button (click) = "loggedIn = !loggedIn">Toggle Login</button>
+<p>Logged In: {{loggedIn}}</p>
+
+@if (loggedIn) {
+  <p>Welcome, you are logged in!</p>
+  <ng-container *ngTemplateOutlet="loggedOut"></ng-container>
+}
+@else {
+  <p>You are not logged in.</p>
+}
+
+<ng-template #loggedOut>
+  <p>my template is not required as else will handle the display</p>
+  <p>Please log in to continue.</p>
+</ng-template>
+
+<button (click)="incDemo()">Ink Me the Demo</button>
+<p>demoCounter: {{demoCounter()}}</p>
