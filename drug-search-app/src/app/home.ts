@@ -1,16 +1,20 @@
-import { AfterViewInit, Component, computed, inject, signal, ViewChild, viewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, computed, effect, inject, signal, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ChildCounter } from './features/pharmacys/child-counter/child-counter';
 import { MyCounterService } from './features/services/my-counter';
-import { count } from 'rxjs/internal/operators/count';
+import { NgTemplateOutlet, CommonModule  } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
   encapsulation: ViewEncapsulation.None,
-  imports: [ChildCounter]
+  imports: [ChildCounter, NgTemplateOutlet, CommonModule],
+  providers: [MyCounterService]
 })
 export class HomeComponent implements AfterViewInit{
   newCounter:number = 0;
+  loggedIn = false;
+  demoCounter = signal(0);
 
   @ViewChild(ChildCounter)
   private childCounter!: ChildCounter;
@@ -19,10 +23,15 @@ export class HomeComponent implements AfterViewInit{
   counter() {
     return 0;
   }
+  incDemo(){
+        this.demoCounter.update(value => value + 1);
+  }
    
   counterService: MyCounterService = inject(MyCounterService);
 
   constructor() {
+    this.demoCounter.set(1);
+    effect(() => console.log(this.demoCounter()));
     this.counterService.counter$.subscribe(counter => {
       this.newCounter  = counter;
     }); 
