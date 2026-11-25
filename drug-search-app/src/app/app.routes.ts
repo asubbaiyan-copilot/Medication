@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ViewPharmacySearchComponent } from './view-pharmacy-search-component/view-pharmacy-search-component';
 
 export const routes: Routes = [
   {
@@ -17,5 +18,17 @@ export const routes: Routes = [
   {
     path: 'pharmacies',
     loadComponent: () => import('./features/pharmacys/presentation/pharmacies/pharmacies').then(m => m.Pharmacies)
-  } 
+  } ,
+  {
+    path: 'template-form',
+    loadComponent: () => import('./template-form/template-form').then(m => m.TemplateForm)
+  },
+  {
+    path: 'reactive-form',
+    loadComponent: () => import('./reactive-form/reactive-form').then(m => m.ReactiveForm)
+  },
+  {
+    path: 'pharmacy-search/:id',
+    component: ViewPharmacySearchComponent
+  }
 ];
