@@ -2,6 +2,8 @@ import { AfterViewInit, Component, computed, effect, inject, signal, ViewChild, 
 import { ChildCounter } from './features/pharmacys/child-counter/child-counter';
 import { MyCounterService } from './features/services/my-counter';
 import { NgTemplateOutlet, CommonModule  } from '@angular/common';
+import { interval, map } from 'rxjs';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,15 @@ export class HomeComponent implements AfterViewInit{
   newCounter:number = 0;
   loggedIn = false;
   demoCounter = signal(0);
+
+  // Observable to Signal
+  seconds$ = interval(1000).pipe(map(tick => tick + 1));
+  seconds = toSignal(this.seconds$, { initialValue: 0 });
+  
+  // Signal to Observable
+  countObservable = signal(0);
+  countObservable$ = toObservable(this.countObservable);
+
 
   @ViewChild(ChildCounter)
   private childCounter!: ChildCounter;
