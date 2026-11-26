@@ -30,5 +30,9 @@ export const routes: Routes = [
   {
     path: 'pharmacy-search/:id',
     component: ViewPharmacySearchComponent
+  },
+  {
+    path: 'material-form',
+    loadComponent: () => import('./view-material-form/view-material-form').then(m => m.ViewMaterialForm)
   }
 ];
