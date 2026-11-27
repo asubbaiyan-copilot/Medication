@@ -6,12 +6,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatSort,MatSortModule  } from '@angular/material/sort';
+ 
 @Component({
-  imports: [CommonModule, MatTableModule, MatPaginatorModule    ],
-  selector: 'app-view-page',
-  styleUrls: ['./view-page.css']  ,
-  templateUrl: './view-page.html',
+    imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule],
+    selector: 'app-view-page',
+    styleUrls: ['./view-page.css']  ,
+    templateUrl: './view-page.html',
 })
 export class ViewPage implements AfterViewInit {
    private readonly pharmacyServices = inject(PharmacyServices);
@@ -26,7 +27,8 @@ export class ViewPage implements AfterViewInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-
+  @ViewChild(MatSort)
+  sort!: MatSort;
  
 constructor() {
   effect(() => {
@@ -38,5 +40,6 @@ constructor() {
    
   ngAfterViewInit() : void {
     this.tableData.paginator = this.paginator;
+    this.tableData.sort = this.sort;
   }
 }
