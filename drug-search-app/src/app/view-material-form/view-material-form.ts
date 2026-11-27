@@ -9,8 +9,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
+interface MaterialRow {
+  material: string;
+  quantity: string;
+}
+
+type MaterialFormGroup = FormGroup<{
+  material: FormControl<string>;
+  quantity: FormControl<string>;
+}>;
 
 @Component({
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTableModule],
@@ -26,25 +35,29 @@ export class ViewMaterialForm implements OnInit {
     materialType: new FormControl('', [Validators.required]),
     agree: new FormControl(false, [Validators.requiredTrue]),
     agreementDate: new FormControl<Date | null>(new Date(), [Validators.required]),
-    materials : new FormArray([
+    materials : new FormArray<MaterialFormGroup>([
       new FormGroup({
-        material: new FormControl('', [Validators.required]),
-        quantity: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")])
+        material: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+        quantity: new FormControl('', { nonNullable: true,
+          validators: [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")]
+        })
       })
     ])
   });
-  tableData: any[] = [];
-  displayedColumns: string[] = [
-  'material',
-  'quantity'
-];
-  get materials() {
-    return this.form.get('materials') as FormArray;
+  tableData = new MatTableDataSource<MaterialRow>();
+  displayedColumns: (keyof MaterialRow)[] = ['material', 'quantity'];
+
+  get materials(): FormArray<MaterialFormGroup> {
+    return this.form.controls.materials;
   }
+
   addMaterial() {
     this.materials.push(new FormGroup({
-      material: new FormControl('', [Validators.required]),
-      quantity: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")])
+      material: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      quantity: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")]
+      })
     }));
   } 
   removeMaterial(index: number) {
@@ -53,7 +66,7 @@ export class ViewMaterialForm implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       console.log(this.form.value);
-      this.tableData = this.form.value.materials ?? [];
+      this.tableData.data = this.materials.getRawValue();
     }
   }
   ngOnInit() {
