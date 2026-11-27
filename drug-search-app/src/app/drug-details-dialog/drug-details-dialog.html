@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>
+  {{ drug.name }}
+</h2>
+
+<mat-dialog-content>
+
+  <p>
+    <strong>ID:</strong>
+    {{ drug.id }}
+  </p>
+
+  <p>
+    <strong>Dose:</strong>
+    {{ drug.dose }}
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    {{ drug.price | currency }}
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    {{ drug.quantity }}
+  </p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button mat-dialog-close>
+    Close
+  </button>
+
+</mat-dialog-actions>

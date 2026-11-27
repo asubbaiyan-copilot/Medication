@@ -1,5 +1,5 @@
 import { Component, inject, AfterViewInit, ViewChild, effect } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar,MatSnackBarModule } from '@angular/material/snack-bar';
 import { PharmacyServices } from '../features/pharmacys/services/pharmacy-services';
 import { Drug } from '../features/pharmacys/domain/drug';
@@ -11,9 +11,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort,MatSortModule  } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { DrugDetailsDialog } from '../drug-details-dialog/drug-details-dialog';
+import { MatDialogModule } from '@angular/material/dialog';
  
 @Component({
-    imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSnackBarModule ],
+    imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule ],
     selector: 'app-view-page',
     styleUrls: ['./view-page.css']  ,
     templateUrl: './view-page.html',
@@ -26,10 +28,11 @@ export class ViewPage implements AfterViewInit {
     'name',
     'dose',
     'price',
-    'quantity'
+    'quantity',
+    'actions'
   ];
   private readonly snackBar = inject(MatSnackBar);
-   readonly drug = inject<Drug>(MAT_DIALOG_DATA);
+  private readonly dialog = inject(MatDialog);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -43,6 +46,12 @@ constructor() {
   }) ;
   
 }
+  viewDrug(Drug: Drug) :void   {
+    this.dialog.open(DrugDetailsDialog, {
+      width: '400px',
+      data: Drug
+    });
+  }
    
   ngAfterViewInit() : void {
     this.tableData.paginator = this.paginator;
