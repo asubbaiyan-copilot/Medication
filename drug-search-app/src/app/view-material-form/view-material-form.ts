@@ -71,7 +71,7 @@ export class ViewMaterialForm implements OnInit {
   }
   ngOnInit() {
      
-  }
+  } 
  
 }
   

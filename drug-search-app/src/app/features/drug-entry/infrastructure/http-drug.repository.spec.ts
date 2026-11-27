@@ -20,7 +20,7 @@ describe('HttpDrugRepository', () => {
     expect(repository).toBeInstanceOf(HttpDrugRepository);
     const response = repository.loadAll();
     const http = TestBed.inject(HttpTestingController);
-    http.expectOne('https://api.example.test/drugs/druglist').flush([]);
+    http.expectOne('https://api.example.test/drugs').flush([]);
 
     await expect(response).resolves.toEqual([]);
     http.verify();

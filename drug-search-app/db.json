@@ -13,9 +13,694 @@
       "dose": "500 mg",
       "price": 15,
       "quantity": 75
+    },
+    {
+      "id": "3",
+      "name": "Amoxicillin",
+      "dose": "5 mg",
+      "price": 9.7,
+      "quantity": 54
+    },
+    {
+      "id": "4",
+      "name": "Atorvastatin",
+      "dose": "10 mg",
+      "price": 12.05,
+      "quantity": 71
+    },
+    {
+      "id": "5",
+      "name": "Lisinopril",
+      "dose": "20 mg",
+      "price": 14.4,
+      "quantity": 88
+    },
+    {
+      "id": "6",
+      "name": "Levothyroxine",
+      "dose": "25 mg",
+      "price": 16.75,
+      "quantity": 105
+    },
+    {
+      "id": "7",
+      "name": "Amlodipine",
+      "dose": "50 mg",
+      "price": 19.1,
+      "quantity": 122
+    },
+    {
+      "id": "8",
+      "name": "Omeprazole",
+      "dose": "100 mg",
+      "price": 21.45,
+      "quantity": 139
+    },
+    {
+      "id": "9",
+      "name": "Losartan",
+      "dose": "250 mg",
+      "price": 23.8,
+      "quantity": 156
+    },
+    {
+      "id": "10",
+      "name": "Albuterol",
+      "dose": "500 mg",
+      "price": 26.15,
+      "quantity": 173
+    },
+    {
+      "id": "11",
+      "name": "Gabapentin",
+      "dose": "5 mg",
+      "price": 28.5,
+      "quantity": 190
+    },
+    {
+      "id": "12",
+      "name": "Hydrochlorothiazide",
+      "dose": "10 mg",
+      "price": 30.85,
+      "quantity": 26
+    },
+    {
+      "id": "13",
+      "name": "Sertraline",
+      "dose": "20 mg",
+      "price": 33.2,
+      "quantity": 43
+    },
+    {
+      "id": "14",
+      "name": "Pantoprazole",
+      "dose": "25 mg",
+      "price": 35.55,
+      "quantity": 60
+    },
+    {
+      "id": "15",
+      "name": "Metoprolol",
+      "dose": "50 mg",
+      "price": 37.9,
+      "quantity": 77
+    },
+    {
+      "id": "16",
+      "name": "Furosemide",
+      "dose": "100 mg",
+      "price": 40.25,
+      "quantity": 94
+    },
+    {
+      "id": "17",
+      "name": "Fluticasone",
+      "dose": "250 mg",
+      "price": 42.6,
+      "quantity": 111
+    },
+    {
+      "id": "18",
+      "name": "Acetaminophen",
+      "dose": "500 mg",
+      "price": 44.95,
+      "quantity": 128
+    },
+    {
+      "id": "19",
+      "name": "Ibuprofen",
+      "dose": "5 mg",
+      "price": 47.3,
+      "quantity": 145
+    },
+    {
+      "id": "20",
+      "name": "Prednisone",
+      "dose": "10 mg",
+      "price": 49.65,
+      "quantity": 162
+    },
+    {
+      "id": "21",
+      "name": "Citalopram",
+      "dose": "20 mg",
+      "price": 52,
+      "quantity": 179
+    },
+    {
+      "id": "22",
+      "name": "Escitalopram",
+      "dose": "25 mg",
+      "price": 54.35,
+      "quantity": 196
+    },
+    {
+      "id": "23",
+      "name": "Bupropion",
+      "dose": "50 mg",
+      "price": 56.7,
+      "quantity": 32
+    },
+    {
+      "id": "24",
+      "name": "Duloxetine",
+      "dose": "100 mg",
+      "price": 59.05,
+      "quantity": 49
+    },
+    {
+      "id": "25",
+      "name": "Venlafaxine",
+      "dose": "250 mg",
+      "price": 61.4,
+      "quantity": 66
+    },
+    {
+      "id": "26",
+      "name": "Trazodone",
+      "dose": "500 mg",
+      "price": 63.75,
+      "quantity": 83
+    },
+    {
+      "id": "27",
+      "name": "Montelukast",
+      "dose": "5 mg",
+      "price": 66.1,
+      "quantity": 100
+    },
+    {
+      "id": "28",
+      "name": "Rosuvastatin",
+      "dose": "10 mg",
+      "price": 68.45,
+      "quantity": 117
+    },
+    {
+      "id": "29",
+      "name": "Simvastatin",
+      "dose": "20 mg",
+      "price": 70.8,
+      "quantity": 134
+    },
+    {
+      "id": "30",
+      "name": "Pravastatin",
+      "dose": "25 mg",
+      "price": 73.15,
+      "quantity": 151
+    },
+    {
+      "id": "31",
+      "name": "Clopidogrel",
+      "dose": "50 mg",
+      "price": 75.5,
+      "quantity": 168
+    },
+    {
+      "id": "32",
+      "name": "Warfarin",
+      "dose": "100 mg",
+      "price": 77.85,
+      "quantity": 185
+    },
+    {
+      "id": "33",
+      "name": "Apixaban",
+      "dose": "250 mg",
+      "price": 80.2,
+      "quantity": 21
+    },
+    {
+      "id": "34",
+      "name": "Rivaroxaban",
+      "dose": "500 mg",
+      "price": 82.55,
+      "quantity": 38
+    },
+    {
+      "id": "35",
+      "name": "Insulin Glargine",
+      "dose": "5 mg",
+      "price": 84.9,
+      "quantity": 55
+    },
+    {
+      "id": "36",
+      "name": "Insulin Lispro",
+      "dose": "10 mg",
+      "price": 87.25,
+      "quantity": 72
+    },
+    {
+      "id": "37",
+      "name": "Sitagliptin",
+      "dose": "20 mg",
+      "price": 89.6,
+      "quantity": 89
+    },
+    {
+      "id": "38",
+      "name": "Empagliflozin",
+      "dose": "25 mg",
+      "price": 91.95,
+      "quantity": 106
+    },
+    {
+      "id": "39",
+      "name": "Dapagliflozin",
+      "dose": "50 mg",
+      "price": 94.3,
+      "quantity": 123
+    },
+    {
+      "id": "40",
+      "name": "Glipizide",
+      "dose": "100 mg",
+      "price": 96.65,
+      "quantity": 140
+    },
+    {
+      "id": "41",
+      "name": "Pioglitazone",
+      "dose": "250 mg",
+      "price": 99,
+      "quantity": 157
+    },
+    {
+      "id": "42",
+      "name": "Carvedilol",
+      "dose": "500 mg",
+      "price": 6.35,
+      "quantity": 174
+    },
+    {
+      "id": "43",
+      "name": "Propranolol",
+      "dose": "5 mg",
+      "price": 8.7,
+      "quantity": 191
+    },
+    {
+      "id": "44",
+      "name": "Spironolactone",
+      "dose": "10 mg",
+      "price": 11.05,
+      "quantity": 27
+    },
+    {
+      "id": "45",
+      "name": "Valsartan",
+      "dose": "20 mg",
+      "price": 13.4,
+      "quantity": 44
+    },
+    {
+      "id": "46",
+      "name": "Olmesartan",
+      "dose": "25 mg",
+      "price": 15.75,
+      "quantity": 61
+    },
+    {
+      "id": "47",
+      "name": "Ramipril",
+      "dose": "50 mg",
+      "price": 18.1,
+      "quantity": 78
+    },
+    {
+      "id": "48",
+      "name": "Enalapril",
+      "dose": "100 mg",
+      "price": 20.45,
+      "quantity": 95
+    },
+    {
+      "id": "49",
+      "name": "Nifedipine",
+      "dose": "250 mg",
+      "price": 22.8,
+      "quantity": 112
+    },
+    {
+      "id": "50",
+      "name": "Diltiazem",
+      "dose": "500 mg",
+      "price": 25.15,
+      "quantity": 129
+    },
+    {
+      "id": "51",
+      "name": "Verapamil",
+      "dose": "5 mg",
+      "price": 27.5,
+      "quantity": 146
+    },
+    {
+      "id": "52",
+      "name": "Azithromycin",
+      "dose": "10 mg",
+      "price": 29.85,
+      "quantity": 163
+    },
+    {
+      "id": "53",
+      "name": "Cephalexin",
+      "dose": "20 mg",
+      "price": 32.2,
+      "quantity": 180
+    },
+    {
+      "id": "54",
+      "name": "Ciprofloxacin",
+      "dose": "25 mg",
+      "price": 34.55,
+      "quantity": 197
+    },
+    {
+      "id": "55",
+      "name": "Doxycycline",
+      "dose": "50 mg",
+      "price": 36.9,
+      "quantity": 33
+    },
+    {
+      "id": "56",
+      "name": "Levofloxacin",
+      "dose": "100 mg",
+      "price": 39.25,
+      "quantity": 50
+    },
+    {
+      "id": "57",
+      "name": "Sulfamethoxazole/Trimethoprim",
+      "dose": "250 mg",
+      "price": 41.6,
+      "quantity": 67
+    },
+    {
+      "id": "58",
+      "name": "Nitrofurantoin",
+      "dose": "500 mg",
+      "price": 43.95,
+      "quantity": 84
+    },
+    {
+      "id": "59",
+      "name": "Clindamycin",
+      "dose": "5 mg",
+      "price": 46.3,
+      "quantity": 101
+    },
+    {
+      "id": "60",
+      "name": "Penicillin V",
+      "dose": "10 mg",
+      "price": 48.65,
+      "quantity": 118
+    },
+    {
+      "id": "61",
+      "name": "Mupirocin",
+      "dose": "20 mg",
+      "price": 51,
+      "quantity": 135
+    },
+    {
+      "id": "62",
+      "name": "Fluconazole",
+      "dose": "25 mg",
+      "price": 53.35,
+      "quantity": 152
+    },
+    {
+      "id": "63",
+      "name": "Acyclovir",
+      "dose": "50 mg",
+      "price": 55.7,
+      "quantity": 169
+    },
+    {
+      "id": "64",
+      "name": "Valacyclovir",
+      "dose": "100 mg",
+      "price": 58.05,
+      "quantity": 186
+    },
+    {
+      "id": "65",
+      "name": "Ondansetron",
+      "dose": "250 mg",
+      "price": 60.4,
+      "quantity": 22
+    },
+    {
+      "id": "66",
+      "name": "Meclizine",
+      "dose": "500 mg",
+      "price": 62.75,
+      "quantity": 39
+    },
+    {
+      "id": "67",
+      "name": "Famotidine",
+      "dose": "5 mg",
+      "price": 65.1,
+      "quantity": 56
+    },
+    {
+      "id": "68",
+      "name": "Ranitidine",
+      "dose": "10 mg",
+      "price": 67.45,
+      "quantity": 73
+    },
+    {
+      "id": "69",
+      "name": "Loperamide",
+      "dose": "20 mg",
+      "price": 69.8,
+      "quantity": 90
+    },
+    {
+      "id": "70",
+      "name": "Bisacodyl",
+      "dose": "25 mg",
+      "price": 72.15,
+      "quantity": 107
+    },
+    {
+      "id": "71",
+      "name": "Polyethylene Glycol",
+      "dose": "50 mg",
+      "price": 74.5,
+      "quantity": 124
+    },
+    {
+      "id": "72",
+      "name": "Cyclobenzaprine",
+      "dose": "100 mg",
+      "price": 76.85,
+      "quantity": 141
+    },
+    {
+      "id": "73",
+      "name": "Tizanidine",
+      "dose": "250 mg",
+      "price": 79.2,
+      "quantity": 158
+    },
+    {
+      "id": "74",
+      "name": "Baclofen",
+      "dose": "500 mg",
+      "price": 81.55,
+      "quantity": 175
+    },
+    {
+      "id": "75",
+      "name": "Meloxicam",
+      "dose": "5 mg",
+      "price": 83.9,
+      "quantity": 192
+    },
+    {
+      "id": "76",
+      "name": "Naproxen",
+      "dose": "10 mg",
+      "price": 86.25,
+      "quantity": 28
+    },
+    {
+      "id": "77",
+      "name": "Celecoxib",
+      "dose": "20 mg",
+      "price": 88.6,
+      "quantity": 45
+    },
+    {
+      "id": "78",
+      "name": "Tramadol",
+      "dose": "25 mg",
+      "price": 90.95,
+      "quantity": 62
+    },
+    {
+      "id": "79",
+      "name": "Topiramate",
+      "dose": "50 mg",
+      "price": 93.3,
+      "quantity": 79
+    },
+    {
+      "id": "80",
+      "name": "Sumatriptan",
+      "dose": "100 mg",
+      "price": 95.65,
+      "quantity": 96
+    },
+    {
+      "id": "81",
+      "name": "Lamotrigine",
+      "dose": "250 mg",
+      "price": 98,
+      "quantity": 113
+    },
+    {
+      "id": "82",
+      "name": "Levetiracetam",
+      "dose": "500 mg",
+      "price": 5.35,
+      "quantity": 130
+    },
+    {
+      "id": "83",
+      "name": "Carbamazepine",
+      "dose": "5 mg",
+      "price": 7.7,
+      "quantity": 147
+    },
+    {
+      "id": "84",
+      "name": "Oxcarbazepine",
+      "dose": "10 mg",
+      "price": 10.05,
+      "quantity": 164
+    },
+    {
+      "id": "85",
+      "name": "Quetiapine",
+      "dose": "20 mg",
+      "price": 12.4,
+      "quantity": 181
+    },
+    {
+      "id": "86",
+      "name": "Aripiprazole",
+      "dose": "25 mg",
+      "price": 14.75,
+      "quantity": 198
+    },
+    {
+      "id": "87",
+      "name": "Risperidone",
+      "dose": "50 mg",
+      "price": 17.1,
+      "quantity": 34
+    },
+    {
+      "id": "88",
+      "name": "Methylphenidate",
+      "dose": "100 mg",
+      "price": 19.45,
+      "quantity": 51
+    },
+    {
+      "id": "89",
+      "name": "Amphetamine/Dextroamphetamine",
+      "dose": "250 mg",
+      "price": 21.8,
+      "quantity": 68
+    },
+    {
+      "id": "90",
+      "name": "Atomoxetine",
+      "dose": "500 mg",
+      "price": 24.15,
+      "quantity": 85
+    },
+    {
+      "id": "91",
+      "name": "Guanfacine",
+      "dose": "5 mg",
+      "price": 26.5,
+      "quantity": 102
+    },
+    {
+      "id": "92",
+      "name": "Lorazepam",
+      "dose": "10 mg",
+      "price": 28.85,
+      "quantity": 119
+    },
+    {
+      "id": "93",
+      "name": "Clonazepam",
+      "dose": "20 mg",
+      "price": 31.2,
+      "quantity": 136
+    },
+    {
+      "id": "94",
+      "name": "Alprazolam",
+      "dose": "25 mg",
+      "price": 33.55,
+      "quantity": 153
+    },
+    {
+      "id": "95",
+      "name": "Zolpidem",
+      "dose": "50 mg",
+      "price": 35.9,
+      "quantity": 170
+    },
+    {
+      "id": "96",
+      "name": "Buspirone",
+      "dose": "100 mg",
+      "price": 38.25,
+      "quantity": 187
+    },
+    {
+      "id": "97",
+      "name": "Hydroxyzine",
+      "dose": "250 mg",
+      "price": 40.6,
+      "quantity": 23
+    },
+    {
+      "id": "98",
+      "name": "Cetirizine",
+      "dose": "500 mg",
+      "price": 42.95,
+      "quantity": 40
+    },
+    {
+      "id": "99",
+      "name": "Loratadine",
+      "dose": "5 mg",
+      "price": 45.3,
+      "quantity": 57
+    },
+    {
+      "id": "100",
+      "name": "Diphenhydramine",
+      "dose": "10 mg",
+      "price": 47.65,
+      "quantity": 74
     }
   ],
-
   "patients": [
     {
       "id": "1",
@@ -30,7 +715,6 @@
       "age": 44
     }
   ],
-
   "prescriptions": [
     {
       "id": "1",
@@ -40,7 +724,6 @@
       "refills": 3
     }
   ],
-
   "pharmacies": [
     {
       "id": "1",
@@ -155,7 +838,6 @@
       "active": true
     }
   ],
-
   "docutrack": [
     {
       "id": "1",
@@ -182,7 +864,6 @@
       "active": false
     }
   ],
-
   "ltc": [
     {
       "id": "1",

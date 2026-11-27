@@ -34,5 +34,9 @@ export const routes: Routes = [
   {
     path: 'material-form',
     loadComponent: () => import('./view-material-form/view-material-form').then(m => m.ViewMaterialForm)
+  },
+  {
+    path: 'view-page',
+    loadComponent: () => import('./view-page/view-page').then(m => m.ViewPage)
   }
 ];
