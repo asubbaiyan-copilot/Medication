@@ -5,3 +5,14 @@ mat-dialog-content {
 p {
   margin: 12px 0;
 }
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.medication-image {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}

@@ -13,9 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DrugDetailsDialog } from '../drug-details-dialog/drug-details-dialog';
 import { MatDialogModule } from '@angular/material/dialog';
- 
+import { MatIconModule } from '@angular/material/icon';
+ import { MatButtonModule } from '@angular/material/button';
+
 @Component({
-    imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule ],
+    imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule, MatButtonModule   ],
     selector: 'app-view-page',
     styleUrls: ['./view-page.css']  ,
     templateUrl: './view-page.html',
