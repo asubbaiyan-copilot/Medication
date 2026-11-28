@@ -38,7 +38,6 @@ export class HomeComponent implements AfterViewInit{
   incDemo(){
         this.demoCounter.update(value => value + 1);
   }
-   
   counterService: MyCounterService = inject(MyCounterService);
   router: Router = inject(Router);
 
