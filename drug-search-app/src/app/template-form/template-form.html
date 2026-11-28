@@ -1,0 +1,12 @@
+<div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <label for="drugName">Drug Name:</label>
+    <input type="text" id="drugName" name="drugName" ngModel required placeholder="Enter drug name">
+    <input type="text" id="drugManufacturer" name="drugManufacturer" ngModel required placeholder="Enter drug manufacturer">
+    <button type="submit" value="Submit" [disabled]="!userForm.valid">Submit</button>
+    @if (submitted) {
+      <p>Form submitted successfully! {{ drugName }} - {{ drugManufacturer }}</p>
+    }
+  </form>
+</div>
+ 

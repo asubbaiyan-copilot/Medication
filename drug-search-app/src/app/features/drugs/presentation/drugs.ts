@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import type { Drug } from '../domain/drug';
 import { CustomStyle } from '../../drug-entry/presentation/directives/custom-style';
 import { InOutChildSample } from '../../pharmacys/presentation/pharmacies/in-out-child-sample/in-out-child-sample';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-drugs',
-  imports: [CommonModule, FormsModule, CustomStyle, InOutChildSample],
+  imports: [CommonModule, FormsModule, MatSnackBarModule, CustomStyle, InOutChildSample],
   standalone: true,
   templateUrl: './drugs.html',
   styleUrls: ['./drugs.css'],
@@ -22,7 +24,8 @@ export class DrugsComponent {
   readonly captionNewDrugDosage: string = 'Dosage';
   readonly captionNewDrugFrequency: string = 'Frequency';
   readonly captionNewDrugShape: string = 'Shape';
-  
+
+
   drugTotalCount = computed(() => this.drugs().length);
   isEntryValid = computed(() =>
     [
@@ -39,6 +42,15 @@ export class DrugsComponent {
   newDrugDosage = signal('');
   newDrugFrequency = signal('');
   newDrugShape = signal('');
+
+  private route = inject(ActivatedRoute);
+  private readonly snackBar = inject(MatSnackBar);
+
+  constructor()  {
+    const id:number | null = Number(this.route.snapshot.paramMap.get('id'));
+    const message = id === null || isNaN(id) ? 'No drug ID found in route' : `Drug ID: ${id}`;
+    this.snackBar.open(message, 'Close', { duration: 3000 });
+  }
   get(val: number) {
       this.childCounter = val;
    } 

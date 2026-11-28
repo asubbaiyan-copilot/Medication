@@ -1,0 +1,37 @@
+<h2 mat-dialog-title class="dialog-title">
+  <img class="medication-image" src="/medication.svg" alt="" aria-hidden="true">
+  {{ drug.name }}
+</h2>
+
+<mat-dialog-content>
+
+  <p>
+    <strong>ID:</strong>
+     <mat-icon>fingerprint</mat-icon> {{ drug.id }}
+  </p>
+
+  <p>
+    <strong>Dose:</strong>
+      <mat-icon>medication_liquid</mat-icon> {{ drug.dose }}
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <mat-icon>attach_money</mat-icon> {{ drug.price | currency }}
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <mat-icon>inventory_2</mat-icon> {{ drug.quantity }}
+  </p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button mat-dialog-close>
+   <mat-icon>close</mat-icon>
+    Close
+  </button>
+
+</mat-dialog-actions>

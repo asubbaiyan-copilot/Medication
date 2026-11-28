@@ -1,20 +1,32 @@
 import { AfterViewInit, Component, computed, effect, inject, signal, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChildCounter } from './features/pharmacys/child-counter/child-counter';
 import { MyCounterService } from './features/services/my-counter';
-import { NgTemplateOutlet, CommonModule  } from '@angular/common';
+import { interval, map } from 'rxjs';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { AuthState } from './auth-state';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
   encapsulation: ViewEncapsulation.None,
-  imports: [ChildCounter, NgTemplateOutlet, CommonModule],
+  imports: [ChildCounter],
   providers: [MyCounterService]
 })
 export class HomeComponent implements AfterViewInit{
   newCounter:number = 0;
-  loggedIn = false;
+  readonly authState = inject(AuthState);
   demoCounter = signal(0);
+
+  // Observable to Signal
+  seconds$ = interval(1000).pipe(map(tick => tick + 1));
+  seconds = toSignal(this.seconds$, { initialValue: 0 });
+  
+  // Signal to Observable
+  countObservable = signal(0);
+  countObservable$ = toObservable(this.countObservable);
+
 
   @ViewChild(ChildCounter)
   private childCounter!: ChildCounter;
@@ -26,9 +38,14 @@ export class HomeComponent implements AfterViewInit{
   incDemo(){
         this.demoCounter.update(value => value + 1);
   }
-   
   counterService: MyCounterService = inject(MyCounterService);
+  router: Router = inject(Router);
 
+  navigateToView() {
+    // Implement your navigation logic here
+    console.log('Navigating to view...');
+    this.router.navigate(['/entry/3']);
+  }
   constructor() {
     this.demoCounter.set(1);
     effect(() => console.log(this.demoCounter()));

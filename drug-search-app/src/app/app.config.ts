@@ -13,6 +13,8 @@ import { HttpDocurackRepository } from './features/pharmacys/application/ports/h
 import { DocutrackRepository } from './features/pharmacys/services/docutrack-repository';
 import { HttpLtcRepository } from './features/pharmacys/application/ports/http-ltc.repository';
 import { LtcRepository } from './features/pharmacys/services/ltc-repository';
+import { PharmacyDrugRepository } from './features/pharmacys/services/drug-repository';
+import { HttpPharmacyDrugRepository } from './features/pharmacys/application/ports/http-drug.repository';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +24,8 @@ export const appConfig: ApplicationConfig = {
     { provide: DrugRepository, useClass: HttpDrugRepository },
     { provide: PharmacyRepository, useClass: HttpPharmacyRepository},
     { provide: DocutrackRepository, useClass: HttpDocurackRepository },
-    { provide: LtcRepository, useClass: HttpLtcRepository }
+    { provide: LtcRepository, useClass: HttpLtcRepository },
+    { provide: PharmacyDrugRepository, useClass: HttpPharmacyDrugRepository }
     
   ]
 };
