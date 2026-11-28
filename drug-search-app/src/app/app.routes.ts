@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ViewPharmacySearchComponent } from './view-pharmacy-search-component/view-pharmacy-search-component';
+import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
   {
@@ -14,7 +15,16 @@ export const routes: Routes = [
   {
     path: 'drugs',
     loadComponent: () => import('./features/drugs/presentation/drugs').then(m => m.DrugsComponent)
-  } ,
+  },
+  {
+    path: 'entry/:id',
+    canActivate: [authGuard],
+    loadComponent: () => import('./features/drug-entry/presentation/drug-entry').then(m => m.DrugEntryComponent)
+  },
+  {
+    path: 'unauthorized',
+    loadComponent: () => import('./unauthorized').then(m => m.UnauthorizedComponent)
+  },
   {
     path: 'pharmacies',
     loadComponent: () => import('./features/pharmacys/presentation/pharmacies/pharmacies').then(m => m.Pharmacies)

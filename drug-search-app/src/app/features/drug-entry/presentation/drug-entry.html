@@ -10,18 +10,34 @@
   } @else if (drugs().length === 0) {
     <p>No drugs are currently available.</p>
   } @else {
-    <p>{{ drugs().length }} drugs in inventory</p>
+    <div class="drug-entry__view-options" aria-label="Record view">
+      <button
+        type="button"
+        [disabled]="showAllRecords()"
+        (click)="showAll()">
+        Show all records
+      </button>
+      @if (hasRouteId) {
+        <button
+          type="button"
+          [disabled]="!showAllRecords()"
+          (click)="showFiltered()">
+          Show filtered record
+        </button>
+      }
+    </div>
+
+    <p>Showing {{ filteredDrugs().length }} of {{ drugs().length }} drugs</p>
 
     <ul class="drug-entry__list" aria-label="Drug inventory">
-      @for (drug of drugs(); track $index; let index = $index) {
+      @for (drug of filteredDrugs(); track drug.id; let index = $index) {
         <li>
           <app-drug-card
+            [id]="drug.id"
             [name]="drug.name"
             [dose]="drug.dose"
             [price]="drug.price"
-            [quantity]="drug.quantity"
-            (quantityChange)="updateQuantity(index, $event)"
-            (priceChange)="updatePrice(index, $event)">
+            [quantity]="drug.quantity">
           </app-drug-card>
         </li>
       }

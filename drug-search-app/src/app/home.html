@@ -1,15 +1,21 @@
+
+<button
+  type="button"
+  (click)="navigateToView()">
+go to view
+</button>
 <!-- Login demo -->
 <button
   type="button"
-  (click)="loggedIn = !loggedIn">
+  (click)="authState.toggleLogin()">
   Toggle Login
 </button>
 
 <p>
-  Logged In: {{ loggedIn }}
+  Logged In: {{ authState.loggedIn() }}
 </p>
 
-@if (loggedIn) {
+@if (authState.loggedIn()) {
 
   <p>Welcome, you are logged in!</p>
 

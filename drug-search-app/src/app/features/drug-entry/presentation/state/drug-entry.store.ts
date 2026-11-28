@@ -28,7 +28,7 @@ export class DrugEntryStore {
   addDrug(): void {
     this.drugs.update(drugs => [
       ...drugs,
-      { name: 'New Drug', dose: 100, price: 5, quantity: 0 },
+      { id: '12', name: 'New Drug', dose: 100, price: 5, quantity: 0 },
     ]);
   }
 
