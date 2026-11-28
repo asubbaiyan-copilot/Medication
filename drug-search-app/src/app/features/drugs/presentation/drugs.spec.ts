@@ -36,4 +36,20 @@ describe('DrugsComponent', () => {
     expect(fixture.componentInstance.drugs()).toHaveLength(1);
     expect(button.disabled).toBe(true);
   });
+
+  it('does not decrement below zero and displays an accessible error', async () => {
+    fixture.componentInstance.decrementCounter();
+    await fixture.whenStable();
+
+    const element: HTMLElement = fixture.nativeElement;
+    const error = element.querySelector<HTMLElement>('[role="alert"]');
+    expect(fixture.componentInstance.counter).toBe(0);
+    expect(error?.textContent).toContain('The counter cannot go below zero.');
+
+    fixture.componentInstance.incrementCounter();
+    await fixture.whenStable();
+
+    expect(fixture.componentInstance.counter).toBe(1);
+    expect(fixture.componentInstance.counterError()).toBe('');
+  });
 });

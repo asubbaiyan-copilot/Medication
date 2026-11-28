@@ -1,7 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output, signal } from '@angular/core';
 import { increasePrice, isInStock, purchase, sell, totalPrice } from '../../../domain/drug-rules';
-
+ 
 @Component({
   imports: [CurrencyPipe],
   selector: 'app-drug-card',
@@ -13,6 +13,8 @@ export class DrugCardComponent {
   warning = signal('');
   private warnTimer?: ReturnType<typeof setTimeout>;
 
+ 
+  @Input() id = '';
   @Input() name = '';
   @Input() dose = 0;
   @Input() price = 0;

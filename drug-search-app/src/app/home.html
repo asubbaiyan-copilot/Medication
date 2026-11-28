@@ -1,7 +1,129 @@
-<h2>Welcome to Drug Search</h2>
-<p>This website is intended to help you find information about medications.</p>
-<p>Visit Drugs to view and manage the sample medication list.</p>
-@if (canShow()) {
-  <p>{{tips()}}</p>
-  <p [title]="canShow()?tips():''">{{fullName()}}</p>
+<button
+  type="button"
+  (click)="navigateToView()">
+go to view
+</button>
+<!-- Login demo -->
+<button
+  type="button"
+  (click)="authState.toggleLogin()">
+  Toggle Login
+</button>
+
+<p>
+  Logged In: {{ authState.loggedIn() }}
+</p>
+
+@if (authState.loggedIn()) {
+
+  <p>Welcome, you are logged in!</p>
+
+} @else {
+
+  <p>You are not logged in.</p>
+
+}
+
+<button type="button" #showreportBtn >
+  Show Report
+</button>
+
+@defer (on interaction(showreportBtn)) {
+
+  <h2>Welcome to Drug Search</h2>
+
+  <p>
+    This website is intended to help you find information about medications.
+  </p>
+
+  <p>
+    Visit Drugs to view and manage the sample medication list.
+  </p>
+
+  <!-- @if example -->
+  @if (canShow()) {
+
+    <p>{{ tips() }}</p>
+
+    <p [title]="canShow() ? tips() : ''">
+      {{ fullName() }}
+    </p>
+
+  }
+
+
+  <!-- Child component using template reference -->
+  <app-child-counter #child></app-child-counter>
+
+  <button type="button" (click)="child.increment()">
+    Increment
+  </button>
+
+  <button type="button" (click)="child.decrement()">
+    Decrement
+  </button>
+
+  <p>
+    childCounter: {{ child.childCounter() }}
+  </p>
+
+
+  <!-- Another child component -->
+  <app-child-counter></app-child-counter>
+
+
+  <!-- Parent counter -->
+  <button type="button" (click)="inc()">
+    View Child Increment
+  </button>
+
+  <button type="button" (click)="dec()">
+    View Child Decrement
+  </button>
+
+  <p>
+    childCounter: {{ counter() }}
+  </p>
+
+
+  <!-- Regular property counter -->
+  <button type="button" (click)="incNew()">
+    Increment New
+  </button>
+
+  <button type="button" (click)="decNew()">
+    Decrement New
+  </button>
+
+  <p>
+    newCounter: {{ newCounter }}
+  </p>
+
+
+  <!-- Signal demo -->
+  <button type="button" (click)="incDemo()">
+    Inc Me the Demo
+  </button>
+
+  <p>
+    demoCounter: {{ demoCounter() }}
+  </p>
+
+}
+@placeholder {
+
+  <p>
+    Click "Show Report" to load the Drug Search content.
+  </p>
+
+}
+@loading {
+
+  <p>Loading Drug Search...</p>
+
+}
+@error {
+
+  <p>Unable to load Drug Search.</p>
+
 }

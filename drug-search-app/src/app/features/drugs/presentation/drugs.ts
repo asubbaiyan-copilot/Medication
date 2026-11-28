@@ -1,23 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import type { Drug } from '../domain/drug';
 import { CustomStyle } from '../../drug-entry/presentation/directives/custom-style';
+import { InOutChildSample } from '../../pharmacys/presentation/pharmacies/in-out-child-sample/in-out-child-sample';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-drugs',
-  imports: [CommonModule, FormsModule, CustomStyle],
+  imports: [CommonModule, FormsModule, MatSnackBarModule, CustomStyle, InOutChildSample],
   standalone: true,
   templateUrl: './drugs.html',
   styleUrls: ['./drugs.css'],
 })
 export class DrugsComponent {
+  caption: string = 'Medication Management';
+  childCounter: number = 0;
+  counter: number = 0;
+  readonly counterError = signal('');
   isRequired :boolean = true;
   readonly captionNewDrugName: string = 'Drug Name';
   readonly captionNewDrugDosage: string = 'Dosage';
   readonly captionNewDrugFrequency: string = 'Frequency';
   readonly captionNewDrugShape: string = 'Shape';
-  
+
+
   drugTotalCount = computed(() => this.drugs().length);
   isEntryValid = computed(() =>
     [
@@ -35,6 +43,17 @@ export class DrugsComponent {
   newDrugFrequency = signal('');
   newDrugShape = signal('');
 
+  private route = inject(ActivatedRoute);
+  private readonly snackBar = inject(MatSnackBar);
+
+  constructor()  {
+    const id:number | null = Number(this.route.snapshot.paramMap.get('id'));
+    const message = id === null || isNaN(id) ? 'No drug ID found in route' : `Drug ID: ${id}`;
+    this.snackBar.open(message, 'Close', { duration: 3000 });
+  }
+  get(val: number) {
+      this.childCounter = val;
+   } 
   addDrug(): void {
     if (!this.isEntryValid()) return;
 
@@ -59,5 +78,23 @@ export class DrugsComponent {
     this.newDrugDosage.set('');
     this.newDrugFrequency.set('');
     this.newDrugShape.set('');
+  }
+  incrementCounter(): void {
+       if (this.counter > 9) {
+      this.counterError.set('The counter cannot go above 10.');
+      return;
+    }
+    this.counter++;
+    this.counterError.set('');
+  }
+
+  decrementCounter(): void {
+    if (this.counter === 0) {
+      this.counterError.set('The counter cannot go below zero.');
+      return;
+    }
+
+    this.counter--;
+    this.counterError.set('');
   }
 }

@@ -1,0 +1,27 @@
+<div>
+  <form [formGroup]="formdata" (ngSubmit)="onSubmit(formdata.value)">
+    <label for="userName">User Name:</label>
+    <input class="form-control" type="text" id="userName" formControlName="userName" required placeholder="Enter user name">
+    <label for="userEmail">User Email:</label>
+    <input class="form-control" type="email" id="userEmail" formControlName="userEmail" required placeholder="Enter user email">
+    @if (shouldShowError('userEmail')) {
+        <div class="text-danger">
+            Please enter a valid email.
+        </div>
+        }
+
+    @if (shouldShowError('userName')) {
+    <div class="text-danger">
+        Please enter a valid user name (3-10 characters).
+    </div>
+    }
+    <button class="btn btn-primary" type="submit" [disabled]="!formdata.valid">Submit</button>
+  </form>
+  @if (formdata.invalid) {
+    <p class="text-danger">Please fill out the form correctly.</p>
+  }
+ @if(submitted)
+  {
+    <p class="text-success">Form submitted successfully! {{ userName }} - {{ userEmail }}</p>
+  }
+</div>

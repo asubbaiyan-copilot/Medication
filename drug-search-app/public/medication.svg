@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Medication">
+  <path fill="#ff9f1c" d="M35 14h20a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4H35a4 4 0 0 1-4-4v-7a4 4 0 0 1 4-4Z"/>
+  <path fill="#ffb84d" d="M34 27h22v23a8 8 0 0 1-8 8H38a8 8 0 0 1-8-8V31a4 4 0 0 1 4-4Z"/>
+  <path fill="#fff" d="M40 35h6v6h6v6h-6v6h-6v-6h-6v-6h6Z"/>
+  <g transform="rotate(-42 23 40)">
+    <path fill="#fff" stroke="#2a9d8f" stroke-width="2.5" d="M14 20a9 9 0 0 1 18 0v40a9 9 0 0 1-18 0V20Z"/>
+    <path fill="#2a9d8f" d="M14 20a9 9 0 0 1 18 0v20H14V20Z"/>
+  </g>
+</svg>

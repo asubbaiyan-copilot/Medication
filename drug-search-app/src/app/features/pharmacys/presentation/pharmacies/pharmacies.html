@@ -1,0 +1,88 @@
+<section class="pharmacies">
+  <header class="pharmacies__header">
+    <h1>Pharmacies</h1>
+    <p class="pharmacies__subtitle">Select a pharmacy to view its linked Docutrack and LTC instances.</p>
+  </header>
+  <app-in-out-child-sample [counter]="rows().length" [caption]="caption"></app-in-out-child-sample>
+  
+  <ul class="pharmacy-list">
+    @for (row of rows(); track row.pharmacy.id) {
+      <li class="pharmacy-card" [class.pharmacy-card--open]="isExpanded(row.pharmacy.id)">
+        <button
+          type="button"
+          class="pharmacy-card__toggle"
+          [attr.aria-expanded]="isExpanded(row.pharmacy.id)"
+          [attr.aria-controls]="'pharmacy-children-' + row.pharmacy.id"
+          (click)="toggle(row.pharmacy.id)"
+        >
+          <div class="pharmacy-card__main">
+            <span class="pharmacy-card__name">{{ row.pharmacy.name }}</span>
+            <span class="pharmacy-card__address">
+              {{ row.pharmacy.address }}, {{ row.pharmacy.city }}, {{ row.pharmacy.state }} {{ row.pharmacy.zipCode }}
+            </span>
+          </div>
+          <div class="pharmacy-card__meta">
+            <span class="badge" [class.badge--active]="row.pharmacy.active" [class.badge--inactive]="!row.pharmacy.active">
+              {{ row.pharmacy.active ? 'Active' : 'Inactive' }}
+            </span>
+            <span class="badge badge--type">{{ row.pharmacy.pharmacyType }}</span>
+            <span class="pharmacy-card__chevron" aria-hidden="true">{{ isExpanded(row.pharmacy.id) ? '▾' : '▸' }}</span>
+          </div>
+        </button>
+
+        @if (isExpanded(row.pharmacy.id)) {
+          <div class="pharmacy-card__details" [id]="'pharmacy-children-' + row.pharmacy.id">
+            <dl class="pharmacy-card__info">
+              <div><dt>Code</dt><dd>{{ row.pharmacy.code }}</dd></div>
+              <div><dt>Phone</dt><dd>{{ row.pharmacy.phone }}</dd></div>
+            </dl>
+
+            <div class="child-group">
+              <h3>Docutrack instance</h3>
+              @if (row.docutrack; as instance) {
+                <div class="child-item">
+                  <div class="child-item__header">
+                    <span class="child-item__name">{{ instance.name }}</span>
+                    <span class="badge" [class.badge--active]="instance.active" [class.badge--inactive]="!instance.active">
+                      {{ instance.active ? 'Active' : 'Inactive' }}
+                    </span>
+                  </div>
+                  <dl class="child-item__info">
+                    <div><dt>Instance ID</dt><dd>{{ instance.instanceId }}</dd></div>
+                    <div><dt>SQL Server</dt><dd>{{ instance.sqlServerName }}</dd></div>
+                    <div><dt>SOAP endpoint</dt><dd>{{ instance.soapEndpointUrl }}</dd></div>
+                  </dl>
+                </div>
+              } @else {
+                <p class="child-group__empty">No Docutrack instance linked.</p>
+              }
+            </div>
+
+            <div class="child-group">
+              <h3>LTC instance</h3>
+              @if (row.ltc; as instance) {
+                <div class="child-item">
+                  <div class="child-item__header">
+                    <span class="child-item__name">{{ instance.name }}</span>
+                    <span class="badge" [class.badge--active]="instance.active" [class.badge--inactive]="!instance.active">
+                      {{ instance.active ? 'Active' : 'Inactive' }}
+                    </span>
+                  </div>
+                  <dl class="child-item__info">
+                    <div><dt>Instance ID</dt><dd>{{ instance.instanceId }}</dd></div>
+                    <div><dt>SQL Server</dt><dd>{{ instance.sqlServerName }}</dd></div>
+                    <div><dt>SOAP endpoint</dt><dd>{{ instance.soapEndpointUrl }}</dd></div>
+                  </dl>
+                </div>
+              } @else {
+                <p class="child-group__empty">No LTC instance linked.</p>
+              }
+            </div>
+          </div>
+        }
+      </li>
+    } @empty {
+      <li class="pharmacies__empty">No pharmacies found.</li>
+    }
+  </ul>
+</section>
