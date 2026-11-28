@@ -38,5 +38,9 @@ export const routes: Routes = [
   {
     path: 'view-page',
     loadComponent: () => import('./view-page/view-page').then(m => m.ViewPage)
+  },
+  {
+    path: 'view-menu',
+    loadComponent: () => import('./view-menu/view-menu').then(m => m.ViewMenu)
   }
 ];

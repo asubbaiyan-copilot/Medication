@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, computed, effect, inject, signal, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ChildCounter } from './features/pharmacys/child-counter/child-counter';
 import { MyCounterService } from './features/services/my-counter';
-import { NgTemplateOutlet, CommonModule  } from '@angular/common';
 import { interval, map } from 'rxjs';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
@@ -10,7 +9,7 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
   standalone: true,
   templateUrl: './home.html',
   encapsulation: ViewEncapsulation.None,
-  imports: [ChildCounter, NgTemplateOutlet, CommonModule],
+  imports: [ChildCounter],
   providers: [MyCounterService]
 })
 export class HomeComponent implements AfterViewInit{

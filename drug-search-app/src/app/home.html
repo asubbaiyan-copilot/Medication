@@ -1,41 +1,124 @@
-<h2>Welcome to Drug Search</h2>
-<p>This website is intended to help you find information about medications.</p>
-<p>Visit Drugs to view and manage the sample medication list.</p>
-@if (canShow()) {
-  <p>{{tips()}}</p>
-  <p [title]="canShow()?tips():''">{{fullName()}}</p>
-}
-<app-child-counter #child></app-child-counter>
-<button (click)="child.increment()">Increment</button>
-<button (click)="child.decrement()">Decrement</button>
-<p>childCounter: {{child.childCounter()}}</p>
+<!-- Login demo -->
+<button
+  type="button"
+  (click)="loggedIn = !loggedIn">
+  Toggle Login
+</button>
 
-<app-child-counter></app-child-counter>
-
-<button (click)="inc()">view child Increment</button>
-<button (click)="dec()">view child Decrement</button>
-<p>childCounter: {{counter()}}</p>
-
- 
-<button (click)="incNew()">Increment New</button>
-<button (click)="decNew()">Decrement New</button>
-<p>newCounter: {{newCounter}}</p>
-
-<button (click) = "loggedIn = !loggedIn">Toggle Login</button>
-<p>Logged In: {{loggedIn}}</p>
+<p>
+  Logged In: {{ loggedIn }}
+</p>
 
 @if (loggedIn) {
+
   <p>Welcome, you are logged in!</p>
-  <ng-container *ngTemplateOutlet="loggedOut"></ng-container>
-}
-@else {
+
+} @else {
+
   <p>You are not logged in.</p>
+
 }
 
-<ng-template #loggedOut>
-  <p>my template is not required as else will handle the display</p>
-  <p>Please log in to continue.</p>
-</ng-template>
+<button type="button" #showreportBtn >
+  Show Report
+</button>
 
-<button (click)="incDemo()">Ink Me the Demo</button>
-<p>demoCounter: {{demoCounter()}}</p>
+@defer (on interaction(showreportBtn)) {
+
+  <h2>Welcome to Drug Search</h2>
+
+  <p>
+    This website is intended to help you find information about medications.
+  </p>
+
+  <p>
+    Visit Drugs to view and manage the sample medication list.
+  </p>
+
+  <!-- @if example -->
+  @if (canShow()) {
+
+    <p>{{ tips() }}</p>
+
+    <p [title]="canShow() ? tips() : ''">
+      {{ fullName() }}
+    </p>
+
+  }
+
+
+  <!-- Child component using template reference -->
+  <app-child-counter #child></app-child-counter>
+
+  <button type="button" (click)="child.increment()">
+    Increment
+  </button>
+
+  <button type="button" (click)="child.decrement()">
+    Decrement
+  </button>
+
+  <p>
+    childCounter: {{ child.childCounter() }}
+  </p>
+
+
+  <!-- Another child component -->
+  <app-child-counter></app-child-counter>
+
+
+  <!-- Parent counter -->
+  <button type="button" (click)="inc()">
+    View Child Increment
+  </button>
+
+  <button type="button" (click)="dec()">
+    View Child Decrement
+  </button>
+
+  <p>
+    childCounter: {{ counter() }}
+  </p>
+
+
+  <!-- Regular property counter -->
+  <button type="button" (click)="incNew()">
+    Increment New
+  </button>
+
+  <button type="button" (click)="decNew()">
+    Decrement New
+  </button>
+
+  <p>
+    newCounter: {{ newCounter }}
+  </p>
+
+
+  <!-- Signal demo -->
+  <button type="button" (click)="incDemo()">
+    Inc Me the Demo
+  </button>
+
+  <p>
+    demoCounter: {{ demoCounter() }}
+  </p>
+
+}
+@placeholder {
+
+  <p>
+    Click "Show Report" to load the Drug Search content.
+  </p>
+
+}
+@loading {
+
+  <p>Loading Drug Search...</p>
+
+}
+@error {
+
+  <p>Unable to load Drug Search.</p>
+
+}
